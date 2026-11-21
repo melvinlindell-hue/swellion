@@ -4,9 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Swellion – dagens svenska frågesport</title>
-<meta name="description" content="Fem frågor om dagen. Många rätta svar – ju ovanligare svar, desto mer poäng.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap">
+<meta name="description" content="Fem frågor om Sverige varje dag. Många rätta svar – ju ovanligare svar, desto mer poäng.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Crect width=%2716%27 height=%2716%27 fill=%27%23132447%27/%3E%3Crect x=%274%27 y=%274%27 width=%278%27 height=%278%27 fill=%27%23ffcc33%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,11 +31,7 @@
     <p class="lead" id="home-tagline"></p>
     <div class="card how">
       <p id="home-how"></p>
-      <div class="tiers">
-        <span class="tier t1">Vanlig <b>+20 m</b></span>
-        <span class="tier t2">Ovanlig <b>+50 m</b></span>
-        <span class="tier t3">Sällsynt <b>+100 m</b></span>
-      </div>
+      <div class="tiers" id="home-tiers"></div>
     </div>
     <button class="btn primary big" id="btn-start"></button>
     <p class="streak" id="home-streak"></p>
@@ -46,6 +41,7 @@
   <section id="view-game" class="view" hidden>
     <div class="card qcard">
       <p class="qcount" id="qcount"></p>
+      <div class="timer" id="timer"><i id="timer-bar"></i><span id="timer-sec"></span></div>
       <h2 class="question" id="question"></h2>
       <form id="guess-form" autocomplete="off">
         <input id="guess" type="text" maxlength="40" enterkeyhint="send" autocapitalize="sentences">

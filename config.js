@@ -4,8 +4,8 @@ window.SWELLION_CONFIG = {
   siteName: "Swellion",
   domain: "swellion.io",
   timeZone: "Europe/Stockholm",
-  triesPerQuestion: 2,
-  points: { 1: 20, 2: 50, 3: 100 },      // meter per svar: vanlig, ovanlig, sällsynt (max 100 per fråga)
+  secondsPerQuestion: 30,                // tid per fråga; fel svar kostar inget
+  points: { 1: 20, 2: 40, 3: 60, 4: 80, 5: 100 },   // meter per nivå (max 100 per fråga, 500 per omgång)
   coffeeUrl: "",                          // TODO: länk till "köp mig en kaffe" (t.ex. Ko-fi/Gumroad)
   premium: {
     priceText: "50 kr",
