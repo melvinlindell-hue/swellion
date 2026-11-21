@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Swellion – dagens svenska frågesport</title>
+<meta name="description" content="Fem frågor om dagen. Många rätta svar – ju ovanligare svar, desto mer poäng.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#" data-go="home"><canvas class="logo-mark" id="logo-moose"></canvas>SWELLION</a>
+  <nav>
+    <button class="nav-btn" data-go="archive">Arkiv</button>
+    <button class="nav-btn premium" data-go="premium">Premium</button>
+  </nav>
+</header>
+
+<div class="scene-wrap" id="scene-wrap">
+  <canvas id="scene"></canvas>
+  <div class="hud hud-left"><span id="hud-m">0</span> m</div>
+  <div class="hud hud-right" id="hud-region"></div>
+  <div class="banner" id="banner" hidden></div>
+</div>
+<main id="app">
+  <!-- HEM -->
+  <section id="view-home" class="view">
+    <p class="date" id="home-date"></p>
+    <h1>Dagens omgång</h1>
+    <p class="lead" id="home-tagline"></p>
+    <div class="card how">
+      <p id="home-how"></p>
+      <div class="tiers">
+        <span class="tier t1">Vanlig <b>+20 m</b></span>
+        <span class="tier t2">Ovanlig <b>+50 m</b></span>
+        <span class="tier t3">Sällsynt <b>+100 m</b></span>
+      </div>
+    </div>
+    <button class="btn primary big" id="btn-start"></button>
+    <p class="streak" id="home-streak"></p>
+  </section>
+
+  <!-- SPEL -->
+  <section id="view-game" class="view" hidden>
+    <div class="card qcard">
+      <p class="qcount" id="qcount"></p>
+      <h2 class="question" id="question"></h2>
+      <form id="guess-form" autocomplete="off">
+        <input id="guess" type="text" maxlength="40" enterkeyhint="send" autocapitalize="sentences">
+        <button class="btn primary" id="btn-guess" type="submit"></button>
+      </form>
+      <p class="msg" id="msg" aria-live="polite"></p>
+      <div id="reveal" hidden>
+        <div class="answer-chip" id="answer-chip"></div>
+        <p class="hint" id="tier-hint"></p>
+        <details class="others"><summary id="others-title"></summary><div id="others"></div></details>
+        <button class="btn primary" id="btn-next"></button>
+      </div>
+      <button class="btn ghost" id="btn-pass"></button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </section>
+
+  <!-- RESULTAT -->
+  <section id="view-result" class="view" hidden>
+    <p class="date" id="res-date"></p>
+    <h1 id="res-title"></h1>
+    <div class="big-score"><span id="res-score"></span><small> m</small></div>
+    <p class="res-region" id="res-region"></p>
+    <div class="squares" id="res-squares"></div>
+    <ol class="res-list" id="res-list"></ol>
+    <button class="btn primary" id="btn-share"></button>
+    <p class="streak" id="res-streak"></p>
+    <p class="countdown" id="countdown"></p>
+    <div class="card upsell">
+      <b>Vill du spela mer?</b>
+      <p>Spela tidigare omgångar i arkivet – eller skaffa Premium för fler minispel utan reklam.</p>
+      <div class="row">
+        <button class="btn" data-go="archive">Arkivet</button>
+        <button class="btn premium" data-go="premium">Premium</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARKIV -->
+  <section id="view-archive" class="view" hidden>
+    <h1 id="arch-title"></h1>
+    <ul class="archive" id="archive-list"></ul>
+  </section>
+
+  <!-- PREMIUM -->
+  <section id="view-premium" class="view" hidden>
+    <h1 id="prem-title"></h1>
+    <div class="card prem-card">
+      <div class="price" id="prem-price"></div>
+      <ul id="prem-points"></ul>
+      <button class="btn premium big" id="btn-premium" disabled></button>
+      <p class="hint">Premium kopplas till ett konto (inloggning med e-postlänk eller Google) så att det fungerar på alla dina enheter.</p>
+    </div>
+  </section>
+</main>
+
+<div class="route" id="route">
+  <canvas id="strip"></canvas>
+  <canvas id="marker" class="marker"></canvas>
+</div>
+
+<footer>
+  <button class="coffee" id="btn-coffee">☕ <span id="coffee-label"></span></button>
+  <p id="footer-text"></p>
+</footer>
+
+<!-- Modal (reklam / kaffe) -->
+<div class="modal" id="modal" hidden>
+  <div class="modal-box">
+    <h3 id="modal-title"></h3>
+    <p id="modal-text"></p>
+    <div class="ad-slot" id="ad-slot" hidden>Reklamyta</div>
+    <div class="row">
+      <button class="btn ghost" id="modal-close"></button>
+      <button class="btn primary" id="modal-ok" hidden></button>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script src="config.js"></script>
+<script src="text/sv.js"></script>
+<script src="data/sv/rounds.js"></script>
+<script src="scene.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
